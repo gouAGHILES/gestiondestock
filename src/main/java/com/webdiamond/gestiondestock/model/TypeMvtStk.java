@@ -13,4 +13,6 @@ import lombok.*;
 public class TypeMvtStk {
 
     private String type;
+
+    private Integer idEntreprise;
 }

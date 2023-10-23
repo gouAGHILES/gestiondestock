@@ -23,6 +23,8 @@ public class Ventes extends AbstractEntity{
 
     private String commentaire;
 
+    private Integer idEntreprise;
+
     @OneToMany(mappedBy = "ventes")
     private List<LigneVente> ligneVentes;
 }

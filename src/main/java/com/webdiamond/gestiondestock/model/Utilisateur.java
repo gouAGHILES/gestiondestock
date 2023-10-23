@@ -3,6 +3,8 @@ package com.webdiamond.gestiondestock.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.Instant;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -18,6 +20,7 @@ public class Utilisateur extends AbstractEntity{
 
     private String email;
 
+    private Instant dateDeNaissance;
 
     @Embedded
     private Adresse adresse;

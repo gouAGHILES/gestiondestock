@@ -6,6 +6,7 @@ import jakarta.persistence.JoinColumn;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.Instant;
 import java.util.List;
 @Data
 @Builder
@@ -20,6 +21,8 @@ public class UtilisateurDto {
     private AdresseDto adresseDto;
 
     private String email;
+
+    private Instant dateDeNaissance;
 
     private String motDePasse;
 
@@ -42,6 +45,7 @@ public class UtilisateurDto {
                 .prenom(utilisateur.getPrenom())
                 .photo(utilisateur.getPhoto())
                 .email(utilisateur.getEmail())
+                .dateDeNaissance(utilisateur.getDateDeNaissance())
                 .build();
     }
 
@@ -56,6 +60,7 @@ public class UtilisateurDto {
         utilisateur.setPrenom(dto.getPrenom());
         utilisateur.setPhoto(dto.getPhoto());
         utilisateur.setEmail(dto.getEmail());
+        utilisateur.setDateDeNaissance(dto.getDateDeNaissance());
 
         return utilisateur;
     }
