@@ -20,6 +20,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .httpCode(notFound.value())
                 .message(excetion.getMessage())
                 .build();
+
         return new ResponseEntity<>(errorDto, notFound);
     }
 

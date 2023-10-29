@@ -27,6 +27,12 @@ public class InvalidEntityException extends RuntimeException{
         super(message);
         this.errorCodes = errorCodes;
     }
+
+    public InvalidEntityException(String message, ErrorCodes errorCodes,List<String> errors){
+        super(message);
+        this.errorCodes = errorCodes;
+        this.erreurs = errors;
+    }
     public InvalidEntityException(String message, Throwable cause, ErrorCodes errorCodes, List<String> erreurs){
         super(message,cause);
         this.errorCodes = errorCodes;

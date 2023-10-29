@@ -24,7 +24,9 @@ public class LigneVenteDto {
 
     private BigDecimal prixUnitaire;
 
-    public LigneVenteDto fromEntity(LigneVente ligneVente){
+    private Integer idEntreprise;
+
+    public static LigneVenteDto fromEntity(LigneVente ligneVente){
         if(ligneVente == null){
             return null;
         }
@@ -33,10 +35,12 @@ public class LigneVenteDto {
                 .id(ligneVente.getId())
                 .quantite(ligneVente.getQuantite())
                 .prixUnitaire(ligneVente.getPrixUnitaire())
+                .idEntreprise(ligneVente.getIdEntreprise())
+                .article(ArticleDto.fromEntity(ligneVente.getArticle()))
                 .build();
     }
 
-    public LigneVente toEntity(LigneVenteDto dto){
+    public static LigneVente toEntity(LigneVenteDto dto){
         if(dto == null){
             return null;
         }
@@ -45,6 +49,8 @@ public class LigneVenteDto {
         ligneVente.setId(dto.getId());
         ligneVente.setQuantite(dto.getQuantite());
         ligneVente.setPrixUnitaire(dto.getPrixUnitaire());
+        ligneVente.setIdEntreprise(dto.getIdEntreprise());
+        ligneVente.setArticle(ArticleDto.toEntity(dto.getArticle()));
 
         return  ligneVente;
     }

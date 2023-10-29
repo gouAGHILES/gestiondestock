@@ -20,6 +20,8 @@ public class VentesDto {
 
     private String commentaire;
 
+    private Integer idEntreprise;
+
     @JsonIgnore
     private List<LigneVenteDto> ligneVentes;
 
@@ -31,6 +33,7 @@ public class VentesDto {
         return VentesDto.builder()
                 .id(ventes.getId())
                 .code(ventes.getCode())
+                .idEntreprise(ventes.getIdEntreprise())
                 .build();
     }
 
@@ -42,6 +45,7 @@ public class VentesDto {
         Ventes ventes = new Ventes();
         ventes.setId(dto.getId());
         ventes.setCode(dto.getCode());
+        ventes.setIdEntreprise(dto.getIdEntreprise());
 
         return  ventes;
     }

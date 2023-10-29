@@ -2,7 +2,7 @@ package com.webdiamond.gestiondestock.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.webdiamond.gestiondestock.model.Utilisateur;
-import jakarta.persistence.JoinColumn;
+import javax.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -34,7 +34,7 @@ public class UtilisateurDto {
     @JoinColumn
     private List<RolesDto> roles;
 
-    public UtilisateurDto fromEntity(Utilisateur utilisateur){
+    public static UtilisateurDto fromEntity(Utilisateur utilisateur){
         if(utilisateur == null){
             return null;
         }
@@ -46,10 +46,11 @@ public class UtilisateurDto {
                 .photo(utilisateur.getPhoto())
                 .email(utilisateur.getEmail())
                 .dateDeNaissance(utilisateur.getDateDeNaissance())
+                .entreprise(EntrepriseDto.fromEntity(utilisateur.getEntreprise()))
                 .build();
     }
 
-    public Utilisateur toEntity(UtilisateurDto dto){
+    public static Utilisateur toEntity(UtilisateurDto dto){
         if(dto == null){
             return null;
         }
@@ -61,6 +62,7 @@ public class UtilisateurDto {
         utilisateur.setPhoto(dto.getPhoto());
         utilisateur.setEmail(dto.getEmail());
         utilisateur.setDateDeNaissance(dto.getDateDeNaissance());
+        utilisateur.setEntreprise(EntrepriseDto.toEntity(dto.getEntreprise()));
 
         return utilisateur;
     }

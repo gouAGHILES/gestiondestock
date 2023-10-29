@@ -1,7 +1,6 @@
 package com.webdiamond.gestiondestock.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 import lombok.*;
 
 @Data
@@ -10,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "typemvtstk")
-public class TypeMvtStk {
+public class TypeMvtStk extends AbstractEntity{
 
     private String type;
 

@@ -25,10 +25,12 @@ public class FournisseurDto {
 
     private String numTel;
 
+    private Integer idEntreprise;
+
     @JsonIgnore
     private List<CommandeFournisseurDto> commandeFournisseurs;
 
-    public FournisseurDto fromEntity(Fournisseur fournisseur){
+    public static FournisseurDto fromEntity(Fournisseur fournisseur){
         if(fournisseur == null){
             return null;
         }
@@ -40,10 +42,11 @@ public class FournisseurDto {
                 .photo(fournisseur.getPhoto())
                 .numTel(fournisseur.getNumTel())
                 .email(fournisseur.getEmail())
+                .idEntreprise(fournisseur.getIdEntreprise())
                 .build();
     }
 
-    public Fournisseur toEntity(FournisseurDto dto){
+    public static Fournisseur toEntity(FournisseurDto dto){
         if(dto == null){
             return null;
         }
@@ -55,6 +58,7 @@ public class FournisseurDto {
         fournisseur.setPhoto(dto.getPhoto());
         fournisseur.setNumTel(dto.getNumTel());
         fournisseur.setEmail(dto.getEmail());
+        fournisseur.setIdEntreprise(dto.getIdEntreprise());
 
         return fournisseur;
     }

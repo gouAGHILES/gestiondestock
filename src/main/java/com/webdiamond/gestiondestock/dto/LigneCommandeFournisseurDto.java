@@ -2,7 +2,6 @@ package com.webdiamond.gestiondestock.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.webdiamond.gestiondestock.model.LigneCommandeClient;
 import com.webdiamond.gestiondestock.model.LigneCommandeFournisseur;
 import lombok.Builder;
 import lombok.Data;
@@ -19,13 +18,15 @@ public class LigneCommandeFournisseurDto {
     private ArticleDto article;
 
     @JsonInclude
-    private CommandeFournisseurDto commandeFournisseurDto;
+    private CommandeFournisseurDto commandeFournisseur;
 
     private BigDecimal quantite;
 
     private BigDecimal prixUnitaire;
 
-    public LigneCommandeFournisseurDto fromEntity(LigneCommandeFournisseur ligneCommandeFournisseur){
+    private Integer idEntreprise;
+
+    public static LigneCommandeFournisseurDto fromEntity(LigneCommandeFournisseur ligneCommandeFournisseur){
         if(ligneCommandeFournisseur == null){
             return null;
         }
@@ -34,10 +35,12 @@ public class LigneCommandeFournisseurDto {
                 .id(ligneCommandeFournisseur.getId())
                 .quantite(ligneCommandeFournisseur.getQuantite())
                 .prixUnitaire(ligneCommandeFournisseur.getPrixUnitaire())
+                .idEntreprise(ligneCommandeFournisseur.getIdEntreprise())
+                .commandeFournisseur(CommandeFournisseurDto.fromEntity(ligneCommandeFournisseur.getCommandeFournisseur()))
                 .build();
     }
 
-    public LigneCommandeFournisseur toEntity(LigneCommandeFournisseurDto dto){
+    public static LigneCommandeFournisseur toEntity(LigneCommandeFournisseurDto dto){
         if(dto == null){
             return null;
         }
@@ -46,6 +49,8 @@ public class LigneCommandeFournisseurDto {
         ligneCommandeFournisseur.setId(dto.getId());
         ligneCommandeFournisseur.setQuantite(dto.getQuantite());
         ligneCommandeFournisseur.setPrixUnitaire(dto.getPrixUnitaire());
+        ligneCommandeFournisseur.setIdEntreprise(dto.getIdEntreprise());
+        ligneCommandeFournisseur.setCommandeFournisseur(CommandeFournisseurDto.toEntity(dto.getCommandeFournisseur()));
 
         return  ligneCommandeFournisseur;
     }

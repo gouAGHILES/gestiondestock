@@ -2,7 +2,7 @@ package com.webdiamond.gestiondestock.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -21,12 +21,11 @@ public class AbstractEntity implements Serializable {
     private Integer id;
 
     @CreatedDate
-    @Column(name = "creationDate",nullable = false)
-    @JsonIgnore
+    @Column(name = "creationDate", nullable = false, updatable = false)
     private Instant creationData;
 
     @LastModifiedDate
     @Column(name = "lastModifiedDate")
-    @JsonIgnore
     private Instant lastUpdateDate;
+
 }

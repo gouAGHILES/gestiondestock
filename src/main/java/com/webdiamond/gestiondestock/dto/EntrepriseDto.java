@@ -18,7 +18,7 @@ public class EntrepriseDto {
     private String description;
 
     @JsonIgnore
-    private AdresseDto adresse;
+    private AdresseDto adresseDto;
 
     private String photo;
 
@@ -31,7 +31,7 @@ public class EntrepriseDto {
     @JsonIgnore
     private List<UtilisateurDto> utilisateurs;
 
-    public EntrepriseDto fromEntity(Entreprise entreprise){
+    public static EntrepriseDto fromEntity(Entreprise entreprise){
         if(entreprise == null){
             return null;
         }
@@ -47,7 +47,7 @@ public class EntrepriseDto {
                 .build();
     }
 
-    public Entreprise toEntity(EntrepriseDto dto){
+    public static Entreprise toEntity(EntrepriseDto dto){
         if(dto == null){
             return null;
         }

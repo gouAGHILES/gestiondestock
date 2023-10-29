@@ -6,6 +6,8 @@ import com.webdiamond.gestiondestock.model.Utilisateur;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class RolesDto {
@@ -15,7 +17,9 @@ public class RolesDto {
     private String roleName;
 
     @JsonIgnore
-    private Utilisateur utilisateur;
+    private List<Utilisateur> utilisateurs;
+
+    private Integer idEntreprise;
 
     public RolesDto fromEntity(Roles roles){
         if(roles == null){
@@ -25,6 +29,7 @@ public class RolesDto {
         return RolesDto.builder()
                 .id(roles.getId())
                 .roleName(roles.getRoleName())
+                .idEntreprise(roles.getIdEntreprise())
                 .build();
     }
 

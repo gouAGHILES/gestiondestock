@@ -1,7 +1,7 @@
 package com.webdiamond.gestiondestock.model;
 
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 import lombok.*;
 
 @Data
